@@ -1,10 +1,6 @@
 import json
 with open("diccionario_libros.json", 'r', encoding='utf-8') as archivo:
     datos = json.load(archivo)
-
-
-
-#datos = {"contador":  0}
 print(datos["contador"])
 repetir = True
 contador = datos["contador"]
@@ -15,9 +11,11 @@ while repetir:
         datos["contador"] = contador
         codigo = "COD" + str(contador)
         print(codigo)
-        datos[codigo] = {"titulo": input("titulo "),
+        datos[codigo] = {"id": contador,
+        "titulo": input("titulo "),
         "autor": input("autor "),
-        "cantidad": int(input("cantidad "))
+        "cantidad": int(input("cantidad ")),
+        "precio": input("precio ")
         
         
         }
@@ -26,6 +24,7 @@ while repetir:
 print(datos)
 
 with open("diccionario_libros.json", 'w', encoding='utf-8') as archivo:
-    archivo = json.dump(datos)
+    json.dump(datos, archivo, indent= 4)
+
 
         
